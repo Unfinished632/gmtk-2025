@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://n8xjoqxb572r"]
+
+[ext_resource type="PackedScene" uid="uid://ckk5h6p0mcwvt" path="res://Level/player.tscn" id="1_o6mkr"]
+[ext_resource type="Script" uid="uid://b725ncjde7p5e" path="res://Level/Level.cs" id="1_qmtf6"]
+[ext_resource type="Script" uid="uid://ceibpld2gafx6" path="res://Level/LevelUI.cs" id="3_uawph"]
+[ext_resource type="PackedScene" uid="uid://cmn40kxpb3dvb" path="res://Level/loop_slot.tscn" id="4_52x1o"]
+
+[sub_resource type="TileSet" id="TileSet_yfk6w"]
+tile_size = Vector2i(64, 64)
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("player", "tileLayer")]
+script = ExtResource("1_qmtf6")
+player = NodePath("Player")
+tileLayer = NodePath("TileLayer")
+
+[node name="Player" parent="." instance=ExtResource("1_o6mkr")]
+position = Vector2(864, 608)
+
+[node name="TileLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_yfk6w")
+
+[node name="LevelUI" type="Control" parent="." node_paths=PackedStringArray("level", "loopSlotsContainer", "startButton")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_uawph")
+level = NodePath("..")
+loopSlotScene = ExtResource("4_52x1o")
+loopSlotsContainer = NodePath("LoopSlots")
+startButton = NodePath("StartButton")
+loopSlotsCount = 4
+
+[node name="LoopSlots" type="HBoxContainer" parent="LevelUI"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 952.0
+offset_right = 8.0
+offset_bottom = 952.0
+
+[node name="StartButton" type="Button" parent="LevelUI"]
+layout_mode = 0
+offset_left = 1672.0
+offset_top = 960.0
+offset_right = 1880.0
+offset_bottom = 1064.0
+theme_override_font_sizes/font_size = 54
+text = "Start"
