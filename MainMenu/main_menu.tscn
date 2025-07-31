@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://blshug00j621m"]
+[gd_scene load_steps=5 format=3 uid="uid://blshug00j621m"]
 
 [ext_resource type="Script" uid="uid://phtwcdoigsys" path="res://MainMenu/MainMenu.cs" id="1_nhkf3"]
 [ext_resource type="PackedScene" uid="uid://d1a3m1pmshor4" path="res://MainMenu/level_button.tscn" id="2_3w4mj"]
 [ext_resource type="PackedScene" uid="uid://b7csjwgo88ctf" path="res://button.tscn" id="3_5de1l"]
+[ext_resource type="FontFile" uid="uid://r15ytgjs3431" path="res://Font/Analog Whispers FREE.ttf" id="4_ajn5b"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("playButton", "exitButton", "levelSelectionBackButton", "startMenu", "levelSelectionMenu", "levelButtonsContainer")]
 layout_mode = 3
@@ -28,6 +29,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" type="Label" parent="StartMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 136.0
+offset_bottom = 336.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_ajn5b")
+theme_override_font_sizes/font_size = 216
+text = "Loop   Box"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PlayButton" parent="StartMenu" instance=ExtResource("3_5de1l")]
 layout_mode = 1
 
@@ -50,6 +64,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label" type="Label" parent="LevelSelectionMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 40.0
+offset_bottom = 125.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_ajn5b")
+theme_override_font_sizes/font_size = 91
+text = "Select Level"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LevelButtonsContainer" type="GridContainer" parent="LevelSelectionMenu"]
 layout_mode = 1
