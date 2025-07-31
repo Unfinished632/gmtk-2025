@@ -56,28 +56,22 @@ public partial class Level : Node2D{
 
 	void MovePlayer(){
         Vector2 tileSize = tileLayer.TileSet.TileSize;
-        Vector2 playerPos = player.Position;
 
-        switch(playerDir){
-			case Direction.Up:
-                playerGridPos.Y--;
-                playerPos.Y -= tileSize.Y;
-                break;
-			case Direction.Right:
-				playerGridPos.X++;
-				playerPos.X += tileSize.X;
-                break;
-			case Direction.Down:
-				playerGridPos.Y++;
-				playerPos.Y += tileSize.Y;
-                break;
-			case Direction.Left:
-				playerGridPos.X--;
-				playerPos.X -= tileSize.X;
-                break;
+        Vector2 moveDirection = playerDir switch{
+            Direction.Up => Vector2.Up,
+            Direction.Right => Vector2.Right,
+            Direction.Down => Vector2.Down,
+            Direction.Left => Vector2.Left,
+            _ => Vector2.Zero
+        };
+
+        TileData movingTileData = tileLayer.GetCellTileData(playerGridPos + (Vector2I)moveDirection);
+        switch(movingTileData){
+            case null: return;
         }
 
-        player.Position = playerPos;
+        playerGridPos += (Vector2I)moveDirection;
+        player.Position += moveDirection * tileSize;
     }
 
 	void TurnPlayerLeft(){
