@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://g2nlueu7txtm"]
+[gd_scene load_steps=3 format=3 uid="uid://g2nlueu7txtm"]
+
+[ext_resource type="Script" uid="uid://b6xdq6eq4bvb8" path="res://GameManager.cs" id="1_pyidc"]
+[ext_resource type="PackedScene" uid="uid://blshug00j621m" path="res://MainMenu/main_menu.tscn" id="2_vvh5c"]
 
 [node name="Root" type="Node"]
+script = ExtResource("1_pyidc")
+mainMenuScene = ExtResource("2_vvh5c")

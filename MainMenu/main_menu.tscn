@@ -1,0 +1,98 @@
+[gd_scene load_steps=3 format=3 uid="uid://blshug00j621m"]
+
+[ext_resource type="Script" uid="uid://phtwcdoigsys" path="res://MainMenu/MainMenu.cs" id="1_nhkf3"]
+[ext_resource type="PackedScene" uid="uid://d1a3m1pmshor4" path="res://MainMenu/level_button.tscn" id="2_3w4mj"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("playButton", "exitButton", "levelSelectionBackButton", "startMenu", "levelSelectionMenu", "levelButtonsContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nhkf3")
+playButton = NodePath("StartMenu/PlayButton")
+exitButton = NodePath("StartMenu/ExitButton")
+levelSelectionBackButton = NodePath("LevelSelectionMenu/PlayButton")
+startMenu = NodePath("StartMenu")
+levelSelectionMenu = NodePath("LevelSelectionMenu")
+levelButtonsContainer = NodePath("LevelSelectionMenu/LevelButtonsContainer")
+LevelButton = ExtResource("2_3w4mj")
+
+[node name="StartMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="StartMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -68.0
+offset_right = 240.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 81
+text = "Play"
+
+[node name="ExitButton" type="Button" parent="StartMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = 100.0
+offset_right = 240.0
+offset_bottom = 236.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 81
+text = "Exit"
+
+[node name="LevelSelectionMenu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelButtonsContainer" type="GridContainer" parent="LevelSelectionMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 468.0
+offset_top = 248.0
+offset_right = -536.0
+offset_bottom = -168.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 10
+
+[node name="PlayButton" type="Button" parent="LevelSelectionMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 656.0
+offset_top = 348.0
+offset_right = 896.0
+offset_bottom = 484.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 81
+text = "Back"

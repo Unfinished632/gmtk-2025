@@ -22,14 +22,14 @@ tile_set = SubResource("TileSet_yfk6w")
 [node name="LevelUI" type="Control" parent="." node_paths=PackedStringArray("level", "loopSlotsContainer", "startButton")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource("3_uawph")
 level = NodePath("..")
 loopSlotScene = ExtResource("4_52x1o")
 loopSlotsContainer = NodePath("LoopSlots")
 startButton = NodePath("StartButton")
-loopSlotsCount = 4
+loopSlotsCount = 3
 
 [node name="LoopSlots" type="HBoxContainer" parent="LevelUI"]
 layout_mode = 0
