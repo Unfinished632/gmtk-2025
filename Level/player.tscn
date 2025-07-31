@@ -1,9 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckk5h6p0mcwvt"]
+[gd_scene load_steps=4 format=3 uid="uid://ckk5h6p0mcwvt"]
 
-[ext_resource type="Texture2D" uid="uid://bot35wgl8ri62" path="res://icon.svg" id="1_yscwi"]
+[ext_resource type="Script" uid="uid://xpy36o4pq6vr" path="res://Level/Player.cs" id="1_f5lnt"]
+[ext_resource type="Texture2D" uid="uid://bom1lbjytctpu" path="res://Level/player.png" id="1_yscwi"]
+[ext_resource type="Texture2D" uid="uid://6apga4m1cpt" path="res://Level/arrow.png" id="2_toxye"]
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("upArrow", "rightArrow", "downArrow", "leftArrow")]
+script = ExtResource("1_f5lnt")
+upArrow = NodePath("UpArrow")
+rightArrow = NodePath("RightArrow")
+downArrow = NodePath("DownArrow")
+leftArrow = NodePath("LeftArrow")
 
 [node name="Icon" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_yscwi")
+
+[node name="UpArrow" type="Sprite2D" parent="."]
+position = Vector2(0, -98)
+texture = ExtResource("2_toxye")
+
+[node name="RightArrow" type="Sprite2D" parent="."]
+position = Vector2(98, 0)
+rotation = 1.5708
+texture = ExtResource("2_toxye")
+
+[node name="DownArrow" type="Sprite2D" parent="."]
+position = Vector2(0, 98)
+texture = ExtResource("2_toxye")
+flip_v = true
+
+[node name="LeftArrow" type="Sprite2D" parent="."]
+position = Vector2(-98, 0)
+rotation = -1.5708
+texture = ExtResource("2_toxye")

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public partial class Level : Node2D{
     readonly int DIRECTION_COUNT = Enum.GetValues(typeof(Direction)).Length;
 
-    [Export] Node2D player;
+    [Export] Player player;
     [Export] TileMapLayer tileLayer;
 
     public bool paused = true;
@@ -14,7 +14,7 @@ public partial class Level : Node2D{
     int loopIndex = 0;
     Vector2I playerGridPos;
     public LoopSlot[] instLoopSlots;
-    Direction playerDir = Direction.Up;
+    public Direction playerDir = Direction.Up;
 
     public override void _Ready(){
         playerGridPos = (Vector2I)player.Position.Round() / tileLayer.TileSet.TileSize;
@@ -50,6 +50,8 @@ public partial class Level : Node2D{
 
         loopIndex++;
         loopIndex = loopIndex >= instLoopSlots.Length ? 0 : loopIndex;
+
+        player.UpdateArrowDirection();
     }
 
 	void MovePlayer(){
