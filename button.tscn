@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7csjwgo88ctf"]
+[gd_scene load_steps=3 format=3 uid="uid://b7csjwgo88ctf"]
 
 [ext_resource type="Texture2D" uid="uid://u3pp3kch0tsx" path="res://button.png" id="1_r04n3"]
+[ext_resource type="FontFile" uid="uid://r15ytgjs3431" path="res://Font/Analog Whispers FREE.ttf" id="2_n4tde"]
 
 [node name="Button" type="TextureButton"]
 anchors_preset = 8
@@ -22,12 +23,13 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 24.0
-offset_top = 20.0
+offset_top = 28.0
 offset_right = -24.0
-offset_bottom = -20.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 49
+theme_override_fonts/font = ExtResource("2_n4tde")
+theme_override_font_sizes/font_size = 69
 text = "Button"
 horizontal_alignment = 1
 vertical_alignment = 1

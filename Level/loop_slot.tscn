@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmn40kxpb3dvb"]
+[gd_scene load_steps=7 format=3 uid="uid://cmn40kxpb3dvb"]
 
 [ext_resource type="Texture2D" uid="uid://bqwqjce36u4a" path="res://Level/loop-slot.png" id="1_1wotq"]
 [ext_resource type="Script" uid="uid://by8dtcdi4nklg" path="res://Level/LoopSlot.cs" id="2_3on0e"]
 [ext_resource type="Texture2D" uid="uid://kpc3fpxofb0f" path="res://Level/move.png" id="3_jp4ms"]
 [ext_resource type="Texture2D" uid="uid://cfys5b6xku8bx" path="res://Level/turn-left.png" id="4_37yvy"]
 [ext_resource type="Texture2D" uid="uid://17uqj18tac7o" path="res://Level/turn-right.png" id="5_1irpq"]
+[ext_resource type="FontFile" uid="uid://r15ytgjs3431" path="res://Font/Analog Whispers FREE.ttf" id="6_37yvy"]
 
 [node name="LoopSlot" type="TextureRect" node_paths=PackedStringArray("instTexture", "instLabel")]
 offset_right = 40.0
@@ -28,6 +29,9 @@ offset_right = -40.0
 offset_bottom = -160.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_37yvy")
+theme_override_font_sizes/font_size = 21
+text = "Move"
 horizontal_alignment = 1
 vertical_alignment = 2
 
