@@ -7,6 +7,7 @@ public partial class Level : Node2D{
 
     readonly Vector2I WIN_LEVEL_TILE = new(1, 0);
 
+    [Export] Direction startDirection;
     [Export] Player player;
     [Export] TileMapLayer tileLayer;
     [Export] Control levelWonScreen;
@@ -24,6 +25,8 @@ public partial class Level : Node2D{
 
     public override void _Ready(){
         playerGridPos = (Vector2I)player.Position.Round() / tileLayer.TileSet.TileSize;
+        playerDir = startDirection;
+        player.UpdateArrowDirection();
 
         nextLevelButton.Pressed += () => GameManager.Instance.SwitchToLevel(levelIndex + 1);
         mainMenuButton.Pressed += GameManager.Instance.SwitchToMainMenu;
@@ -75,7 +78,7 @@ public partial class Level : Node2D{
         };
 
         Vector2I movingTileAtlasCoords = tileLayer.GetCellAtlasCoords(playerGridPos + (Vector2I)moveDirection);
-        if(movingTileAtlasCoords == null){
+        if(movingTileAtlasCoords == new Vector2I(-1, -1)){
             return;
         }
 

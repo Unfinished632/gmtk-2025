@@ -8,10 +8,6 @@ public partial class Player : Node2D{
 	[Export] Sprite2D downArrow;
 	[Export] Sprite2D leftArrow;
 
-    public override void _Ready(){
-        UpdateArrowDirection();
-    }
-
 	public void UpdateArrowDirection(){
 		switch(level.playerDir){
 			case Direction.Up:
