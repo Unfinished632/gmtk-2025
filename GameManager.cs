@@ -36,7 +36,9 @@ public partial class GameManager : Node{
 
 	public void SwitchToLevel(int levelIndex){
         MainMenu.QueueFree();
+        CurrentLevel?.QueueFree();
         CurrentLevel = LevelScenes[levelIndex].Instantiate<Level>();
+        CurrentLevel.levelIndex = levelIndex;
         AddChild(CurrentLevel);
     }
 

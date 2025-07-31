@@ -5,9 +5,15 @@ using System.Collections.Generic;
 public partial class Level : Node2D{
     readonly int DIRECTION_COUNT = Enum.GetValues(typeof(Direction)).Length;
 
+    readonly Vector2I WIN_LEVEL_TILE = new(1, 0);
+
     [Export] Player player;
     [Export] TileMapLayer tileLayer;
+    [Export] Control levelWonScreen;
+    [Export] TextureButton nextLevelButton;
+    [Export] TextureButton mainMenuButton;
 
+    public int levelIndex = -1;
     public bool paused = true;
     const double LOOP_COOLDOWN = 0.1;
     double loopTimer = 0;
@@ -18,6 +24,9 @@ public partial class Level : Node2D{
 
     public override void _Ready(){
         playerGridPos = (Vector2I)player.Position.Round() / tileLayer.TileSet.TileSize;
+
+        nextLevelButton.Pressed += () => GameManager.Instance.SwitchToLevel(levelIndex + 1);
+        mainMenuButton.Pressed += GameManager.Instance.SwitchToMainMenu;
     }
 
 	public override void _Process(double delta){
@@ -65,9 +74,13 @@ public partial class Level : Node2D{
             _ => Vector2.Zero
         };
 
-        TileData movingTileData = tileLayer.GetCellTileData(playerGridPos + (Vector2I)moveDirection);
-        switch(movingTileData){
-            case null: return;
+        Vector2I movingTileAtlasCoords = tileLayer.GetCellAtlasCoords(playerGridPos + (Vector2I)moveDirection);
+        if(movingTileAtlasCoords == null){
+            return;
+        }
+
+        if(movingTileAtlasCoords == WIN_LEVEL_TILE){
+            WinLevel();
         }
 
         playerGridPos += (Vector2I)moveDirection;
@@ -85,6 +98,16 @@ public partial class Level : Node2D{
 		enumIndex = enumIndex > DIRECTION_COUNT - 1 ? 0 : enumIndex;
 		playerDir = (Direction)enumIndex;
 	}
+
+    void WinLevel(){
+        if(levelIndex == GameManager.Instance.LevelScenes.Length - 1){
+            GameManager.Instance.SwitchToMainMenu();
+            return;
+        }
+
+        levelWonScreen.Visible = true;
+        paused = true;
+    }
 }
 
 public enum PlayerInstruction{
