@@ -1,13 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmn40kxpb3dvb"]
+[gd_scene load_steps=3 format=3 uid="uid://cmn40kxpb3dvb"]
 
-[ext_resource type="Script" uid="uid://by8dtcdi4nklg" path="res://Level/LoopSlot.cs" id="1_1wotq"]
+[ext_resource type="Texture2D" uid="uid://bqwqjce36u4a" path="res://Level/loop-slot.png" id="1_1wotq"]
+[ext_resource type="Script" uid="uid://by8dtcdi4nklg" path="res://Level/LoopSlot.cs" id="2_3on0e"]
 
-[node name="LoopSlot" type="ColorRect" node_paths=PackedStringArray("instLabel")]
-custom_minimum_size = Vector2(120, 120)
-offset_right = 120.0
-offset_bottom = 120.0
-color = Color(0.102234, 0.102234, 0.102234, 1)
-script = ExtResource("1_1wotq")
+[node name="TextureRect" type="TextureRect" node_paths=PackedStringArray("instLabel")]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_1wotq")
+script = ExtResource("2_3on0e")
 instLabel = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
@@ -15,5 +15,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
