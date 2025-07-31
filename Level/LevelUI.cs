@@ -6,6 +6,7 @@ public partial class LevelUI : Control{
     [Export] PackedScene loopSlotScene;
     [Export] HBoxContainer loopSlotsContainer;
     [Export] TextureButton startButton;
+    [Export] TextureButton resetButton;
     [Export(PropertyHint.Range, "1, 10")] int loopSlotsCount = 1;
 
     LoopSlot[] loopSlots = [];
@@ -20,9 +21,19 @@ public partial class LevelUI : Control{
         level.instLoopSlots = loopSlots;
 
         startButton.Pressed += OnStartButtonPressed;
+        resetButton.Pressed += OnResetButtonPressed;
     }
 
 	void OnStartButtonPressed(){
         level.loopPaused = false;
+        startButton.Visible = false;
+        resetButton.Visible = true;
+    }
+
+    void OnResetButtonPressed(){
+        level.loopPaused = true;
+        level.Reset();
+        startButton.Visible = true;
+        resetButton.Visible = false;
     }
 }

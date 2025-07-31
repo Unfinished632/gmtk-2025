@@ -17,6 +17,9 @@ public partial class Level : Node2D{
     [Export] TextureButton pauseMainMenuButton;
     [Export] TextureButton pauseResumeButton;
 
+    Vector2 playerStartPos;
+    Vector2I playerGridStartPos;
+
     public int levelIndex = -1;
     public bool loopPaused = true;
     bool paused = false;
@@ -38,6 +41,9 @@ public partial class Level : Node2D{
         playerGridPos = (Vector2I)player.Position.Round() / tileLayer.TileSet.TileSize;
         playerDir = startDirection;
         player.UpdateArrowDirection();
+
+        playerStartPos = player.Position;
+        playerGridStartPos = playerGridPos;
 
         nextLevelButton.Pressed += () => GameManager.Instance.SwitchToLevel(levelIndex + 1);
         winMainMenuButton.Pressed += GameManager.Instance.SwitchToMainMenu;
@@ -127,6 +133,14 @@ public partial class Level : Node2D{
 
         levelWonScreen.Visible = true;
         loopPaused = true;
+    }
+
+    public void Reset(){
+        playerDir = startDirection;
+        player.Position = playerStartPos;
+        playerGridPos = playerGridStartPos;
+        
+        player.UpdateArrowDirection();
     }
 }
 
