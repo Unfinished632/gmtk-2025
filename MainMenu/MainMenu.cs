@@ -2,9 +2,9 @@ using Godot;
 using System;
 
 public partial class MainMenu : Control{
-    [Export] Button playButton;
-	[Export] Button exitButton;
-	[Export] Button levelSelectionBackButton;
+    [Export] TextureButton playButton;
+	[Export] TextureButton exitButton;
+	[Export] TextureButton levelSelectionBackButton;
 
     [Export] Control startMenu;
 	[Export] Control levelSelectionMenu;

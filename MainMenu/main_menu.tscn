@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://blshug00j621m"]
+[gd_scene load_steps=4 format=3 uid="uid://blshug00j621m"]
 
 [ext_resource type="Script" uid="uid://phtwcdoigsys" path="res://MainMenu/MainMenu.cs" id="1_nhkf3"]
 [ext_resource type="PackedScene" uid="uid://d1a3m1pmshor4" path="res://MainMenu/level_button.tscn" id="2_3w4mj"]
+[ext_resource type="PackedScene" uid="uid://b7csjwgo88ctf" path="res://button.tscn" id="3_5de1l"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("playButton", "exitButton", "levelSelectionBackButton", "startMenu", "levelSelectionMenu", "levelButtonsContainer")]
 layout_mode = 3
@@ -13,7 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_nhkf3")
 playButton = NodePath("StartMenu/PlayButton")
 exitButton = NodePath("StartMenu/ExitButton")
-levelSelectionBackButton = NodePath("LevelSelectionMenu/PlayButton")
+levelSelectionBackButton = NodePath("LevelSelectionMenu/BackButton")
 startMenu = NodePath("StartMenu")
 levelSelectionMenu = NodePath("LevelSelectionMenu")
 levelButtonsContainer = NodePath("LevelSelectionMenu/LevelButtonsContainer")
@@ -27,36 +28,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayButton" type="Button" parent="StartMenu"]
+[node name="PlayButton" parent="StartMenu" instance=ExtResource("3_5de1l")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -240.0
-offset_top = -68.0
-offset_right = 240.0
-offset_bottom = 68.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 81
-text = "Play"
 
-[node name="ExitButton" type="Button" parent="StartMenu"]
+[node name="Label" parent="StartMenu/PlayButton" index="0"]
+text = "Start"
+
+[node name="ExitButton" parent="StartMenu" instance=ExtResource("3_5de1l")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -240.0
-offset_top = 100.0
-offset_right = 240.0
-offset_bottom = 236.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 81
+offset_top = 92.0
+offset_bottom = 252.0
+
+[node name="Label" parent="StartMenu/ExitButton" index="0"]
 text = "Exit"
 
 [node name="LevelSelectionMenu" type="Control" parent="."]
@@ -81,18 +64,16 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 10
 
-[node name="PlayButton" type="Button" parent="LevelSelectionMenu"]
+[node name="BackButton" parent="LevelSelectionMenu" instance=ExtResource("3_5de1l")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 656.0
-offset_top = 348.0
+offset_left = 576.0
+offset_top = 324.0
 offset_right = 896.0
 offset_bottom = 484.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 81
+
+[node name="Label" parent="LevelSelectionMenu/BackButton" index="0"]
 text = "Back"
+
+[editable path="StartMenu/PlayButton"]
+[editable path="StartMenu/ExitButton"]
+[editable path="LevelSelectionMenu/BackButton"]
