@@ -36,9 +36,9 @@ loopSlotsCount = 3
 [node name="LoopSlots" type="HBoxContainer" parent="LevelUI"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 920.0
+offset_top = 912.0
 offset_right = 168.0
-offset_bottom = 1080.0
+offset_bottom = 1072.0
 
 [node name="TextureButton" type="TextureButton" parent="LevelUI"]
 layout_mode = 0

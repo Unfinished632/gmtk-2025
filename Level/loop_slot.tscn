@@ -1,13 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmn40kxpb3dvb"]
+[gd_scene load_steps=6 format=3 uid="uid://cmn40kxpb3dvb"]
 
 [ext_resource type="Texture2D" uid="uid://bqwqjce36u4a" path="res://Level/loop-slot.png" id="1_1wotq"]
 [ext_resource type="Script" uid="uid://by8dtcdi4nklg" path="res://Level/LoopSlot.cs" id="2_3on0e"]
+[ext_resource type="Texture2D" uid="uid://kpc3fpxofb0f" path="res://Level/move.png" id="3_jp4ms"]
+[ext_resource type="Texture2D" uid="uid://cfys5b6xku8bx" path="res://Level/turn-left.png" id="4_37yvy"]
+[ext_resource type="Texture2D" uid="uid://17uqj18tac7o" path="res://Level/turn-right.png" id="5_1irpq"]
 
-[node name="TextureRect" type="TextureRect" node_paths=PackedStringArray("instLabel")]
+[node name="LoopSlot" type="TextureRect" node_paths=PackedStringArray("instTexture", "instLabel")]
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_1wotq")
 script = ExtResource("2_3on0e")
+moveTexture = ExtResource("3_jp4ms")
+turnLeftTexture = ExtResource("4_37yvy")
+turnRightTexture = ExtResource("5_1irpq")
+instTexture = NodePath("InstTexture")
 instLabel = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
@@ -16,8 +23,19 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
-offset_top = 40.0
+offset_top = -48.0
 offset_right = -40.0
-offset_bottom = -40.0
+offset_bottom = -160.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="InstTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

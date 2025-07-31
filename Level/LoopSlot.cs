@@ -6,6 +6,10 @@ public partial class LoopSlot : Control{
 
     public Level level;
 
+    [Export] CompressedTexture2D moveTexture;
+    [Export] CompressedTexture2D turnLeftTexture;
+    [Export] CompressedTexture2D turnRightTexture;
+    [Export] TextureRect instTexture;
     [Export] Label instLabel;
     public PlayerInstruction selectedInst = PlayerInstruction.None;
 
@@ -38,6 +42,23 @@ public partial class LoopSlot : Control{
     }
 
 	void UpdateDisplay(){
-        instLabel.Text = Enum.GetName(typeof(PlayerInstruction), selectedInst);
+        switch(selectedInst){
+            case PlayerInstruction.None:
+                instLabel.Text = "None";
+                instTexture.Texture = null;
+                break;
+            case PlayerInstruction.Move:
+                instLabel.Text = "Move";
+                instTexture.Texture = moveTexture;
+                break;
+            case PlayerInstruction.TurnLeft:
+                instLabel.Text = "Turn Left";
+                instTexture.Texture = turnLeftTexture;
+                break;
+            case PlayerInstruction.TurnRight:
+                instLabel.Text = "Turn Right";
+                instTexture.Texture = turnRightTexture;
+                break;
+        }
     }
 }
