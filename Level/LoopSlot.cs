@@ -20,7 +20,7 @@ public partial class LoopSlot : Control{
     }
 
 	void OnGuiInput(InputEvent inputEvent){
-		if(!level.paused){
+		if(!level.loopPaused){
             return;
         }
 

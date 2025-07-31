@@ -11,11 +11,22 @@ public partial class Level : Node2D{
     [Export] Player player;
     [Export] TileMapLayer tileLayer;
     [Export] Control levelWonScreen;
+    [Export] Control PauseMenu;
     [Export] TextureButton nextLevelButton;
-    [Export] TextureButton mainMenuButton;
+    [Export] TextureButton winMainMenuButton;
+    [Export] TextureButton pauseMainMenuButton;
+    [Export] TextureButton pauseResumeButton;
 
     public int levelIndex = -1;
-    public bool paused = true;
+    public bool loopPaused = true;
+    bool paused = false;
+    public bool Paused{
+        get{ return paused; }
+        set{
+            paused = value;
+            PauseMenu.Visible = paused;
+        }
+    }
     const double LOOP_COOLDOWN = 0.1;
     double loopTimer = 0;
     int loopIndex = 0;
@@ -29,11 +40,17 @@ public partial class Level : Node2D{
         player.UpdateArrowDirection();
 
         nextLevelButton.Pressed += () => GameManager.Instance.SwitchToLevel(levelIndex + 1);
-        mainMenuButton.Pressed += GameManager.Instance.SwitchToMainMenu;
+        winMainMenuButton.Pressed += GameManager.Instance.SwitchToMainMenu;
+        pauseMainMenuButton.Pressed += GameManager.Instance.SwitchToMainMenu;
+        pauseResumeButton.Pressed += () => Paused = false;
     }
 
 	public override void _Process(double delta){
-		if(paused){
+        if(Input.IsActionJustPressed("pause")){
+            Paused = !Paused;
+        }
+
+		if(loopPaused || Paused){
             return;
         }
 
@@ -109,7 +126,7 @@ public partial class Level : Node2D{
         }
 
         levelWonScreen.Visible = true;
-        paused = true;
+        loopPaused = true;
     }
 }
 

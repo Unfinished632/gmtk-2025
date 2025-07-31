@@ -23,6 +23,6 @@ public partial class LevelUI : Control{
     }
 
 	void OnStartButtonPressed(){
-        level.paused = false;
+        level.loopPaused = false;
     }
 }
