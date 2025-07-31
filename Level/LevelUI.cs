@@ -5,7 +5,7 @@ public partial class LevelUI : Control{
     [Export] Level level;
     [Export] PackedScene loopSlotScene;
     [Export] HBoxContainer loopSlotsContainer;
-    [Export] Button startButton;
+    [Export] TextureButton startButton;
     [Export(PropertyHint.Range, "1, 10")] int loopSlotsCount = 1;
 
     LoopSlot[] loopSlots = [];

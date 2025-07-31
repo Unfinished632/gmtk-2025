@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://n8xjoqxb572r"]
+[gd_scene load_steps=7 format=3 uid="uid://n8xjoqxb572r"]
 
 [ext_resource type="PackedScene" uid="uid://ckk5h6p0mcwvt" path="res://Level/player.tscn" id="1_o6mkr"]
 [ext_resource type="Script" uid="uid://b725ncjde7p5e" path="res://Level/Level.cs" id="1_qmtf6"]
 [ext_resource type="Script" uid="uid://ceibpld2gafx6" path="res://Level/LevelUI.cs" id="3_uawph"]
 [ext_resource type="PackedScene" uid="uid://cmn40kxpb3dvb" path="res://Level/loop_slot.tscn" id="4_52x1o"]
+[ext_resource type="Texture2D" uid="uid://bb4gnvvcn5c16" path="res://Level/start-button.png" id="5_iincs"]
 
 [sub_resource type="TileSet" id="TileSet_yfk6w"]
 tile_size = Vector2i(64, 64)
@@ -29,7 +30,7 @@ script = ExtResource("3_uawph")
 level = NodePath("..")
 loopSlotScene = ExtResource("4_52x1o")
 loopSlotsContainer = NodePath("LoopSlots")
-startButton = NodePath("StartButton")
+startButton = NodePath("TextureButton")
 loopSlotsCount = 3
 
 [node name="LoopSlots" type="HBoxContainer" parent="LevelUI"]
@@ -39,11 +40,10 @@ offset_top = 920.0
 offset_right = 168.0
 offset_bottom = 1080.0
 
-[node name="StartButton" type="Button" parent="LevelUI"]
+[node name="TextureButton" type="TextureButton" parent="LevelUI"]
 layout_mode = 0
-offset_left = 1672.0
-offset_top = 960.0
-offset_right = 1880.0
-offset_bottom = 1064.0
-theme_override_font_sizes/font_size = 54
-text = "Start"
+offset_left = 1704.0
+offset_top = 928.0
+offset_right = 1864.0
+offset_bottom = 1088.0
+texture_normal = ExtResource("5_iincs")
