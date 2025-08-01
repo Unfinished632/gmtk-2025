@@ -71,6 +71,10 @@ public partial class Level : Node2D{
 
         loopTimer = 0;
 
+        instLoopSlots[loopIndex].SetHighlighted(true);
+        int prevLoopIndex = loopIndex - 1 < 0 ? instLoopSlots.Length - 1 : loopIndex - 1;
+        instLoopSlots[prevLoopIndex].SetHighlighted(false);
+
         switch(instLoopSlots[loopIndex].selectedInst){
 			case PlayerInstruction.Move:
                 MovePlayer();
@@ -139,7 +143,10 @@ public partial class Level : Node2D{
         playerDir = startDirection;
         player.Position = playerStartPos;
         playerGridPos = playerGridStartPos;
-        
+
+        int prevLoopIndex = loopIndex - 1 < 0 ? instLoopSlots.Length - 1 : loopIndex - 1;
+        instLoopSlots[prevLoopIndex].SetHighlighted(false);
+
         player.UpdateArrowDirection();
     }
 }

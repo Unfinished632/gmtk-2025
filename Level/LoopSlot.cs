@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class LoopSlot : Control{
+public partial class LoopSlot : TextureRect{
 	readonly int PLAYER_INST_COUNT = Enum.GetValues(typeof(PlayerInstruction)).Length;
 
     public Level level;
@@ -9,6 +9,8 @@ public partial class LoopSlot : Control{
     [Export] CompressedTexture2D moveTexture;
     [Export] CompressedTexture2D turnLeftTexture;
     [Export] CompressedTexture2D turnRightTexture;
+    [Export] CompressedTexture2D loopSlotTexture;
+    [Export] CompressedTexture2D highlightedLoopSlotTexture;
     [Export] TextureRect instTexture;
     [Export] Label instLabel;
     public PlayerInstruction selectedInst = PlayerInstruction.None;
@@ -19,7 +21,9 @@ public partial class LoopSlot : Control{
         GuiInput += OnGuiInput;
     }
 
-	void OnGuiInput(InputEvent inputEvent){
+    public void SetHighlighted(bool highlighted) => Texture = highlighted ? highlightedLoopSlotTexture : loopSlotTexture;
+
+    void OnGuiInput(InputEvent inputEvent){
 		if(!level.loopPaused){
             return;
         }
