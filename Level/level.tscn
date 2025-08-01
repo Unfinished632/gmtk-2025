@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://n8xjoqxb572r"]
+[gd_scene load_steps=15 format=4 uid="uid://n8xjoqxb572r"]
 
 [ext_resource type="PackedScene" uid="uid://ckk5h6p0mcwvt" path="res://Level/player.tscn" id="1_o6mkr"]
 [ext_resource type="Script" uid="uid://b725ncjde7p5e" path="res://Level/Level.cs" id="1_qmtf6"]
@@ -6,9 +6,12 @@
 [ext_resource type="Script" uid="uid://ceibpld2gafx6" path="res://Level/LevelUI.cs" id="3_uawph"]
 [ext_resource type="PackedScene" uid="uid://cmn40kxpb3dvb" path="res://Level/loop_slot.tscn" id="4_52x1o"]
 [ext_resource type="Texture2D" uid="uid://bb4gnvvcn5c16" path="res://Level/start-button.png" id="5_iincs"]
+[ext_resource type="Script" uid="uid://c232kehy0bhr0" path="res://SFXButton.cs" id="7_1teg4"]
 [ext_resource type="FontFile" uid="uid://r15ytgjs3431" path="res://Font/Analog Whispers FREE.ttf" id="7_22cqp"]
 [ext_resource type="PackedScene" uid="uid://b7csjwgo88ctf" path="res://button.tscn" id="7_d6qko"]
 [ext_resource type="Texture2D" uid="uid://1nvg8ljc2w12" path="res://Level/reset.png" id="7_wqlfs"]
+[ext_resource type="AudioStream" uid="uid://cy577d3ikq2tu" path="res://SFX/start-button.wav" id="9_i5g78"]
+[ext_resource type="AudioStream" uid="uid://brp218mij0lnq" path="res://SFX/reset.wav" id="10_i5g78"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6qko"]
 texture = ExtResource("3_nk1il")
@@ -60,15 +63,17 @@ offset_top = 912.0
 offset_right = 168.0
 offset_bottom = 1072.0
 
-[node name="StartButton" type="TextureButton" parent="LevelUI"]
+[node name="StartButton" type="TextureButton" parent="LevelUI" node_paths=PackedStringArray("customSFX")]
 layout_mode = 0
 offset_left = 1704.0
 offset_top = 928.0
 offset_right = 1864.0
 offset_bottom = 1088.0
 texture_normal = ExtResource("5_iincs")
+script = ExtResource("7_1teg4")
+customSFX = NodePath("../StartButtonSFX")
 
-[node name="ResetButton" type="TextureButton" parent="LevelUI"]
+[node name="ResetButton" type="TextureButton" parent="LevelUI" node_paths=PackedStringArray("customSFX")]
 visible = false
 layout_mode = 0
 offset_left = 1704.0
@@ -76,6 +81,15 @@ offset_top = 928.0
 offset_right = 1864.0
 offset_bottom = 1088.0
 texture_normal = ExtResource("7_wqlfs")
+script = ExtResource("7_1teg4")
+customSFX = NodePath("../ResetButtonSFX")
+
+[node name="StartButtonSFX" type="AudioStreamPlayer" parent="LevelUI"]
+stream = ExtResource("9_i5g78")
+
+[node name="ResetButtonSFX" type="AudioStreamPlayer" parent="LevelUI"]
+stream = ExtResource("10_i5g78")
+volume_db = -10.0
 
 [node name="LevelWinScreen" type="Control" parent="."]
 visible = false

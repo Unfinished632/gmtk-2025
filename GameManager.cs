@@ -12,6 +12,9 @@ public partial class GameManager : Node{
     public MainMenu MainMenu{ get; private set; }
     public Level CurrentLevel{ get; private set; }
 
+    [Export] public AudioStreamPlayer ButtonSFX{ get; private set; }
+    [Export] public AudioStreamPlayer LoopSlotSFX{ get; private set; }
+
     public override void _Ready(){
 		if(Instance != null){
             QueueFree();

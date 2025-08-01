@@ -43,6 +43,7 @@ public partial class LoopSlot : TextureRect{
 		selectedInst = (PlayerInstruction)enumIndex;
 
         UpdateDisplay();
+        GameManager.Instance.LoopSlotSFX.Play();
     }
 
 	void UpdateDisplay(){

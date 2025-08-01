@@ -1,8 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://g2nlueu7txtm"]
+[gd_scene load_steps=5 format=3 uid="uid://g2nlueu7txtm"]
 
 [ext_resource type="Script" uid="uid://b6xdq6eq4bvb8" path="res://GameManager.cs" id="1_pyidc"]
 [ext_resource type="PackedScene" uid="uid://blshug00j621m" path="res://MainMenu/main_menu.tscn" id="2_vvh5c"]
+[ext_resource type="AudioStream" uid="uid://dfj73h6edme5i" path="res://SFX/button.wav" id="3_vvh5c"]
+[ext_resource type="AudioStream" uid="uid://dhve3isvu2aej" path="res://SFX/loop-slot.wav" id="4_28aoi"]
 
-[node name="Root" type="Node"]
+[node name="Root" type="Node" node_paths=PackedStringArray("ButtonSFX", "LoopSlotSFX")]
 script = ExtResource("1_pyidc")
 mainMenuScene = ExtResource("2_vvh5c")
+ButtonSFX = NodePath("ButtonSFX")
+LoopSlotSFX = NodePath("LoopSlotSFX")
+
+[node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vvh5c")
+
+[node name="LoopSlotSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_28aoi")
