@@ -17,6 +17,8 @@ public partial class Level : Node2D{
     [Export] TextureButton pauseMainMenuButton;
     [Export] TextureButton pauseResumeButton;
 
+    [Export] AudioStreamPlayer loopIterSFX;
+
     Vector2 playerStartPos;
     Vector2I playerGridStartPos;
 
@@ -70,6 +72,8 @@ public partial class Level : Node2D{
         }
 
         loopTimer = 0;
+
+        loopIterSFX.Play();
 
         int prevLoopIndex = loopIndex - 1 < 0 ? instLoopSlots.Length - 1 : loopIndex - 1;
         instLoopSlots[prevLoopIndex].SetHighlighted(false);
