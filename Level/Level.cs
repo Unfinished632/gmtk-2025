@@ -134,6 +134,8 @@ public partial class Level : Node2D{
 	}
 
     void WinLevel(){
+        GameManager.Instance.LevelWinSFX.Play();
+
         if(levelIndex == GameManager.Instance.LevelScenes.Length - 1){
             GameManager.Instance.SwitchToMainMenu();
             return;

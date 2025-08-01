@@ -14,6 +14,7 @@ public partial class GameManager : Node{
 
     [Export] public AudioStreamPlayer ButtonSFX{ get; private set; }
     [Export] public AudioStreamPlayer LoopSlotSFX{ get; private set; }
+    [Export] public AudioStreamPlayer LevelWinSFX{ get; private set; }
 
     public override void _Ready(){
 		if(Instance != null){
