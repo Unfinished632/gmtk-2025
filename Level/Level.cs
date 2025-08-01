@@ -6,17 +6,20 @@ public partial class Level : Node2D{
     readonly int DIRECTION_COUNT = Enum.GetValues(typeof(Direction)).Length;
 
     readonly Vector2I WIN_LEVEL_TILE = new(1, 0);
+    readonly Vector2I SPIKE_TILE = new(2, 0);
 
     [Export] Direction startDirection;
     [Export] Player player;
     [Export] TileMapLayer tileLayer;
     [Export] Control levelWonScreen;
     [Export] Control PauseMenu;
+    [Export] LevelUI levelUI;
     [Export] TextureButton nextLevelButton;
     [Export] TextureButton winMainMenuButton;
     [Export] TextureButton pauseMainMenuButton;
     [Export] TextureButton pauseResumeButton;
 
+    [Export] AudioStreamPlayer resetSFX;
     [Export] AudioStreamPlayer loopIterSFX;
 
     Vector2 playerStartPos;
@@ -116,6 +119,10 @@ public partial class Level : Node2D{
         if(movingTileAtlasCoords == WIN_LEVEL_TILE){
             WinLevel();
         }
+        else if(movingTileAtlasCoords == SPIKE_TILE){
+            levelUI.OnResetButtonPressed();
+            return;
+        }
 
         playerGridPos += (Vector2I)moveDirection;
         player.Position += moveDirection * tileSize;
@@ -146,10 +153,13 @@ public partial class Level : Node2D{
     }
 
     public void Reset(){
+        resetSFX.Play();
+
         playerDir = startDirection;
         player.Position = playerStartPos;
         playerGridPos = playerGridStartPos;
 
+        instLoopSlots[loopIndex].SetHighlighted(false);
         int prevLoopIndex = loopIndex - 1 < 0 ? instLoopSlots.Length - 1 : loopIndex - 1;
         instLoopSlots[prevLoopIndex].SetHighlighted(false);
 

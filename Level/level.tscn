@@ -19,23 +19,30 @@ texture = ExtResource("3_nk1il")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
+2:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_yfk6w"]
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_d6qko")
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("player", "tileLayer", "levelWonScreen", "PauseMenu", "nextLevelButton", "winMainMenuButton", "pauseMainMenuButton", "pauseResumeButton", "loopIterSFX")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("player", "tileLayer", "levelWonScreen", "PauseMenu", "levelUI", "nextLevelButton", "winMainMenuButton", "pauseMainMenuButton", "pauseResumeButton", "resetSFX", "loopIterSFX")]
 script = ExtResource("1_qmtf6")
 startDirection = 1
 player = NodePath("Player")
 tileLayer = NodePath("TileLayer")
 levelWonScreen = NodePath("LevelWinScreen")
 PauseMenu = NodePath("PauseMenu")
+levelUI = NodePath("LevelUI")
 nextLevelButton = NodePath("LevelWinScreen/NextLevelButton")
 winMainMenuButton = NodePath("LevelWinScreen/MainMenuButton")
 pauseMainMenuButton = NodePath("PauseMenu/MainMenuButton")
 pauseResumeButton = NodePath("PauseMenu/ResumeButton")
+resetSFX = NodePath("ResetSFX")
 loopIterSFX = NodePath("LoopIterSFX")
+
+[node name="ResetSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_i5g78")
+volume_db = -10.0
 
 [node name="LoopIterSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_q47le")
@@ -79,7 +86,7 @@ texture_normal = ExtResource("5_iincs")
 script = ExtResource("7_1teg4")
 customSFX = NodePath("../StartButtonSFX")
 
-[node name="ResetButton" type="TextureButton" parent="LevelUI" node_paths=PackedStringArray("customSFX")]
+[node name="ResetButton" type="TextureButton" parent="LevelUI"]
 visible = false
 layout_mode = 0
 offset_left = 1704.0
@@ -87,15 +94,9 @@ offset_top = 928.0
 offset_right = 1864.0
 offset_bottom = 1088.0
 texture_normal = ExtResource("7_wqlfs")
-script = ExtResource("7_1teg4")
-customSFX = NodePath("../ResetButtonSFX")
 
 [node name="StartButtonSFX" type="AudioStreamPlayer" parent="LevelUI"]
 stream = ExtResource("9_i5g78")
-
-[node name="ResetButtonSFX" type="AudioStreamPlayer" parent="LevelUI"]
-stream = ExtResource("10_i5g78")
-volume_db = -10.0
 
 [node name="LevelWinScreen" type="Control" parent="."]
 visible = false

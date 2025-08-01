@@ -30,7 +30,7 @@ public partial class LevelUI : Control{
         resetButton.Visible = true;
     }
 
-    void OnResetButtonPressed(){
+    public void OnResetButtonPressed(){
         level.loopPaused = true;
         level.Reset();
         startButton.Visible = true;
