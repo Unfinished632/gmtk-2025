@@ -47,7 +47,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0.868606, 0.937683, 0.240291, 1)
 theme_override_fonts/font = ExtResource("2_abopu")
 theme_override_font_sizes/font_size = 32
-text = "Click            to start the loop."
+text = "Click            to reset level."
 vertical_alignment = 2
 
 [node name="TutorialStartButton" type="TextureRect" parent="." index="5"]
