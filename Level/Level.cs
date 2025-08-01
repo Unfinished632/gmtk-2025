@@ -71,9 +71,9 @@ public partial class Level : Node2D{
 
         loopTimer = 0;
 
-        instLoopSlots[loopIndex].SetHighlighted(true);
         int prevLoopIndex = loopIndex - 1 < 0 ? instLoopSlots.Length - 1 : loopIndex - 1;
         instLoopSlots[prevLoopIndex].SetHighlighted(false);
+        instLoopSlots[loopIndex].SetHighlighted(true);
 
         switch(instLoopSlots[loopIndex].selectedInst){
 			case PlayerInstruction.Move:

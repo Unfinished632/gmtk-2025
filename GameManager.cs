@@ -44,6 +44,7 @@ public partial class GameManager : Node{
 
 	public void SwitchToMainMenu(){
         CurrentLevel.QueueFree();
+        CurrentLevel = null;
         MainMenu = mainMenuScene.Instantiate<MainMenu>();
         AddChild(MainMenu);
     }
