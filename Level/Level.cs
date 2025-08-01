@@ -174,6 +174,8 @@ public partial class Level : Node2D{
         int prevLoopIndex = loopIndex - 1 < 0 ? instLoopSlots.Length - 1 : loopIndex - 1;
         instLoopSlots[prevLoopIndex].SetHighlighted(false);
 
+        loopIndex = 0;
+
         player.UpdateArrowDirection();
     }
 }
