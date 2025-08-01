@@ -1,12 +1,15 @@
 using Godot;
+using Godot.Collections;
 using System;
-using System.Collections.Generic;
 
 public partial class Level : Node2D{
     readonly int DIRECTION_COUNT = Enum.GetValues(typeof(Direction)).Length;
 
     readonly Vector2I WIN_LEVEL_TILE = new(1, 0);
     readonly Vector2I SPIKE_TILE = new(2, 0);
+
+    [Export] bool isDemo = false;
+    [Export] Array<PlayerInstruction> demoInstructions;
 
     [Export] Direction startDirection;
     [Export] Player player;
@@ -54,6 +57,10 @@ public partial class Level : Node2D{
         winMainMenuButton.Pressed += GameManager.Instance.SwitchToMainMenu;
         pauseMainMenuButton.Pressed += GameManager.Instance.SwitchToMainMenu;
         pauseResumeButton.Pressed += () => Paused = false;
+
+        if(isDemo){
+            loopPaused = false;
+        }
     }
 
 	public override void _Process(double delta){
@@ -75,14 +82,17 @@ public partial class Level : Node2D{
         }
 
         loopTimer = 0;
+        
+        if(!isDemo){
+            loopIterSFX.Play();
+            
+            int prevLoopIndex = loopIndex - 1 < 0 ? instLoopSlots.Length - 1 : loopIndex - 1;
+            instLoopSlots[prevLoopIndex].SetHighlighted(false);
+            instLoopSlots[loopIndex].SetHighlighted(true);
+        }
 
-        loopIterSFX.Play();
-
-        int prevLoopIndex = loopIndex - 1 < 0 ? instLoopSlots.Length - 1 : loopIndex - 1;
-        instLoopSlots[prevLoopIndex].SetHighlighted(false);
-        instLoopSlots[loopIndex].SetHighlighted(true);
-
-        switch(instLoopSlots[loopIndex].selectedInst){
+        PlayerInstruction instruction = isDemo ? demoInstructions[loopIndex] : instLoopSlots[loopIndex].selectedInst;
+        switch(instruction){
 			case PlayerInstruction.Move:
                 MovePlayer();
                 break;
@@ -95,7 +105,8 @@ public partial class Level : Node2D{
         }
 
         loopIndex++;
-        loopIndex = loopIndex >= instLoopSlots.Length ? 0 : loopIndex;
+        int loopLength = isDemo ? demoInstructions.Count : instLoopSlots.Length;
+        loopIndex = loopIndex >= loopLength ? 0 : loopIndex;
 
         player.UpdateArrowDirection();
     }
