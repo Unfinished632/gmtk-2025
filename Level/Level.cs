@@ -30,7 +30,7 @@ public partial class Level : Node2D{
             PauseMenu.Visible = paused;
         }
     }
-    const double LOOP_COOLDOWN = 0.1;
+    const double LOOP_COOLDOWN = 0.3;
     double loopTimer = 0;
     int loopIndex = 0;
     Vector2I playerGridPos;
