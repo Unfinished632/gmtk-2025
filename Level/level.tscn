@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://n8xjoqxb572r"]
+[gd_scene load_steps=18 format=4 uid="uid://n8xjoqxb572r"]
 
 [ext_resource type="PackedScene" uid="uid://ckk5h6p0mcwvt" path="res://Level/player.tscn" id="1_o6mkr"]
 [ext_resource type="Script" uid="uid://b725ncjde7p5e" path="res://Level/Level.cs" id="1_qmtf6"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://1nvg8ljc2w12" path="res://Level/reset.png" id="7_wqlfs"]
 [ext_resource type="AudioStream" uid="uid://cy577d3ikq2tu" path="res://SFX/start-button.wav" id="9_i5g78"]
 [ext_resource type="AudioStream" uid="uid://brp218mij0lnq" path="res://SFX/reset.wav" id="10_i5g78"]
+[ext_resource type="Shader" uid="uid://bkvvht4n7h2ci" path="res://Level/rainbow.gdshader" id="14_dx36h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6qko"]
 texture = ExtResource("3_nk1il")
@@ -25,6 +26,9 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_yfk6w"]
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_d6qko")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dx36h"]
+shader = ExtResource("14_dx36h")
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("player", "tileLayer", "levelWonScreen", "PauseMenu", "gameWinScreen", "levelUI", "nextLevelButton", "winMainMenuButton", "pauseMainMenuButton", "gameWinMainMenuButton", "pauseResumeButton", "resetSFX", "loopIterSFX")]
 script = ExtResource("1_qmtf6")
@@ -206,8 +210,22 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.678431)
 
-[node name="Label" type="Label" parent="GameWinScreen"]
+[node name="RainbowEffect" type="SubViewportContainer" parent="GameWinScreen"]
+material = SubResource("ShaderMaterial_dx36h")
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="GameWinScreen/RainbowEffect"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 0
+
+[node name="Label" type="Label" parent="GameWinScreen/RainbowEffect/SubViewport"]
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 176.0
@@ -219,7 +237,7 @@ text = "YOU WON!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="GameWinScreen"]
+[node name="Label" type="Label" parent="GameWinScreen"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
