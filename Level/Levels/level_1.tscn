@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bb4gnvvcn5c16" path="res://Level/start-button.png" id="3_jr1wx"]
 [ext_resource type="Texture2D" uid="uid://1nvg8ljc2w12" path="res://Level/reset.png" id="4_rvjbh"]
 
-[node name="Level1" instance=ExtResource("1_ofalk")]
+[node name="Level" instance=ExtResource("1_ofalk")]
 
 [node name="TutorialText1" type="Label" parent="." index="2"]
 anchors_preset = 10
