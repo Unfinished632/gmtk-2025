@@ -65,7 +65,7 @@ public partial class Level : Node2D{
     }
 
 	public override void _Process(double delta){
-        if(Input.IsActionJustPressed("pause")){
+        if(Input.IsActionJustPressed("pause") && !isDemo){
             Paused = !Paused;
         }
 
