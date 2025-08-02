@@ -25,8 +25,7 @@ public partial class GameManager : Node{
 
         Instance = this;
 
-        DirAccess dir = DirAccess.Open(LEVELS_DIR);
-        string[] levelFiles = dir.GetFiles();
+        string[] levelFiles = ResourceLoader.ListDirectory(LEVELS_DIR);
 
         LevelScenes = new PackedScene[levelFiles.Length];
 
