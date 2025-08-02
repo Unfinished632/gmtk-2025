@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using static Godot.DisplayServer;
 
 public partial class MainMenu : Control{
     [Export] TextureButton playButton;
@@ -10,6 +11,8 @@ public partial class MainMenu : Control{
 	[Export] Control levelSelectionMenu;
     [Export] GridContainer levelButtonsContainer;
 
+    [Export] CheckboxButton fullscreenCheckbox;
+
     [Export] PackedScene LevelButton;
 
     public override void _Ready(){
@@ -17,6 +20,8 @@ public partial class MainMenu : Control{
         exitButton.Pressed += OnExitButtonPressed;
 
         levelSelectionBackButton.Pressed += SwitchToStartMenu;
+
+        fullscreenCheckbox.Pressed += OnFullscreenCheckboxPressed;
 
         PackedScene[] levels = GameManager.Instance.LevelScenes;
 
@@ -39,5 +44,9 @@ public partial class MainMenu : Control{
 	void SwitchToStartMenu(){
         startMenu.Visible = true;
         levelSelectionMenu.Visible = false;
+    }
+
+    void OnFullscreenCheckboxPressed(){
+        DisplayServer.WindowSetMode(fullscreenCheckbox.IsChecked ? WindowMode.Fullscreen : WindowMode.Windowed);
     }
 }

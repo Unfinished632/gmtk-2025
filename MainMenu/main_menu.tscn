@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://blshug00j621m"]
+[gd_scene load_steps=8 format=3 uid="uid://blshug00j621m"]
 
 [ext_resource type="Script" uid="uid://phtwcdoigsys" path="res://MainMenu/MainMenu.cs" id="1_nhkf3"]
 [ext_resource type="PackedScene" uid="uid://d1a3m1pmshor4" path="res://MainMenu/level_button.tscn" id="2_3w4mj"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bmy3teue0kjey" path="res://MainMenu/title_demo_1.tscn" id="3_po2gx"]
 [ext_resource type="FontFile" uid="uid://r15ytgjs3431" path="res://Font/Analog Whispers FREE.ttf" id="4_ajn5b"]
 [ext_resource type="PackedScene" uid="uid://cy0fcjp7bn5c6" path="res://MainMenu/title_demo_2.tscn" id="4_kbpwf"]
+[ext_resource type="PackedScene" uid="uid://b8ijn8a0n6ciu" path="res://checkbox.tscn" id="5_jdgnk"]
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("playButton", "exitButton", "levelSelectionBackButton", "startMenu", "levelSelectionMenu", "levelButtonsContainer")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("playButton", "exitButton", "levelSelectionBackButton", "startMenu", "levelSelectionMenu", "levelButtonsContainer", "fullscreenCheckbox")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +22,7 @@ levelSelectionBackButton = NodePath("LevelSelectionMenu/BackButton")
 startMenu = NodePath("StartMenu")
 levelSelectionMenu = NodePath("LevelSelectionMenu")
 levelButtonsContainer = NodePath("LevelSelectionMenu/LevelButtonsContainer")
+fullscreenCheckbox = NodePath("StartMenu/FullscreenCheckbox")
 LevelButton = ExtResource("2_3w4mj")
 
 [node name="TitleDemo1" parent="." instance=ExtResource("3_po2gx")]
@@ -34,6 +36,30 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="FullscreenCheckbox" parent="StartMenu" instance=ExtResource("5_jdgnk")]
+layout_mode = 1
+offset_left = 784.0
+offset_top = 364.0
+offset_right = 944.0
+offset_bottom = 524.0
+
+[node name="Label2" type="Label" parent="StartMenu/FullscreenCheckbox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -376.0
+offset_top = 32.0
+offset_right = -169.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_ajn5b")
+theme_override_font_sizes/font_size = 69
+text = "Fullscreen"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="StartMenu"]
 layout_mode = 1
