@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 public partial class GameManager : Node{
 	public static GameManager Instance{ get; private set; }
@@ -26,6 +28,7 @@ public partial class GameManager : Node{
         Instance = this;
 
         string[] levelFiles = ResourceLoader.ListDirectory(LEVELS_DIR);
+        levelFiles = [.. levelFiles.OrderBy(x => int.Parse(IntegerRegex().Match(x).Value))];
 
         LevelScenes = new PackedScene[levelFiles.Length];
 
@@ -52,4 +55,7 @@ public partial class GameManager : Node{
         MainMenu = mainMenuScene.Instantiate<MainMenu>();
         AddChild(MainMenu);
     }
+
+    [GeneratedRegex(@"\d+")]
+    private static partial Regex IntegerRegex();
 }

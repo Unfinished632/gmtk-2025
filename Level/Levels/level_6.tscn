@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=4 uid="uid://dqjm33hls054l"]
+
+[ext_resource type="PackedScene" uid="uid://n8xjoqxb572r" path="res://Level/level.tscn" id="1_bxf7d"]
+[ext_resource type="FontFile" uid="uid://r15ytgjs3431" path="res://Font/Analog Whispers FREE.ttf" id="2_2j1ij"]
+
+[node name="Level" instance=ExtResource("1_bxf7d")]
+startDirection = 0
+
+[node name="TutorialText" type="Label" parent="." index="0"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 840.0
+offset_bottom = 171.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.868606, 0.937683, 0.240291, 1)
+theme_override_fonts/font = ExtResource("2_2j1ij")
+theme_override_font_sizes/font_size = 32
+text = "Confusion tiles make you confused.
+You move in the opposite direction when you are confused.
+You go back to normal if you press the confusion tile again."
+
+[node name="TileLayer" parent="." index="3"]
+tile_map_data = PackedByteArray("AAALAAQAAAAAAAAAAAALAAUAAAAAAAAAAAALAAYAAAAAAAAAAAALAAcAAAAAAAAAAAALAAgAAAAAAAAAAAALAAkAAAAAAAAAAAALAAoAAAAAAAAAAAALAAsAAAAAAAAAAAALAAwAAAAAAAAAAAALAA0AAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAAAAAAAAAAMAAoAAAAAAAAAAAAMAAsAAAAAAAAAAAAMAAwAAAAAAAAAAAAMAA0AAAAAAAAAAAANAAQAAAAAAAAAAAANAAUAAAADAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAANAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAoAAAAAAAAAAAANAAsAAAAAAAAAAAANAAwAAAABAAAAAAANAA0AAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAoAAAAAAAAAAAAOAAsAAAAAAAAAAAAOAAwAAAAAAAAAAAAOAA0AAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAPAAsAAAAAAAAAAAAPAAwAAAAAAAAAAAAPAA0AAAAAAAAAAAA=")
+
+[node name="Player" parent="." index="4"]
+position = Vector2(864, 736)
+
+[node name="LevelUI" parent="." index="5"]
+loopSlotsCount = 1
+
+[editable path="LevelWinScreen/NextLevelButton"]
+[editable path="LevelWinScreen/MainMenuButton"]
+[editable path="PauseMenu/ResumeButton"]
+[editable path="PauseMenu/MainMenuButton"]

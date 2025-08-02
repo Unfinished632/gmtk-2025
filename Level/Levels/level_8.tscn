@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=4 uid="uid://45o8vip81rhn"]
+
+[ext_resource type="PackedScene" uid="uid://n8xjoqxb572r" path="res://Level/level.tscn" id="1_rh8xw"]
+
+[node name="Level" instance=ExtResource("1_rh8xw")]
+
+[node name="TileLayer" parent="." index="2"]
+tile_map_data = PackedByteArray("AAANAAcAAAACAAAAAAANAAgAAAAAAAAAAAANAAkAAAACAAAAAAANAAoAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAADAAAAAAAOAAkAAAACAAAAAAAOAAoAAAABAAAAAAAPAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAPAAkAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAkAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAcAAAAAAAAAAAARAAgAAAAAAAAAAAARAAkAAAAAAAAAAAARAAoAAAAAAAAAAAARAAsAAAACAAAAAAASAAcAAAACAAAAAAA=")
+
+[node name="Player" parent="." index="3"]
+position = Vector2(864, 544)
+
+[node name="LevelUI" parent="." index="4"]
+offset_left = 16.0
+offset_right = 1936.0
+loopSlotsCount = 5
+
+[editable path="LevelWinScreen/NextLevelButton"]
+[editable path="LevelWinScreen/MainMenuButton"]
+[editable path="PauseMenu/ResumeButton"]
+[editable path="PauseMenu/MainMenuButton"]
