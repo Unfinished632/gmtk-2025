@@ -7,6 +7,7 @@ public partial class Level : Node2D{
 
     readonly Vector2I WIN_LEVEL_TILE = new(1, 0);
     readonly Vector2I SPIKE_TILE = new(2, 0);
+    readonly Vector2I CONFUSION_TILE = new(3, 0);
 
     [Export] bool isDemo = false;
     [Export] Array<PlayerInstruction> demoInstructions;
@@ -92,6 +93,10 @@ public partial class Level : Node2D{
         }
 
         PlayerInstruction instruction = isDemo ? demoInstructions[loopIndex] : instLoopSlots[loopIndex].selectedInst;
+        loopIndex++;
+        int loopLength = isDemo ? demoInstructions.Count : instLoopSlots.Length;
+        loopIndex = loopIndex >= loopLength ? 0 : loopIndex;
+
         switch(instruction){
 			case PlayerInstruction.Move:
                 MovePlayer();
@@ -103,10 +108,6 @@ public partial class Level : Node2D{
                 TurnPlayerRight();
                 break;
         }
-
-        loopIndex++;
-        int loopLength = isDemo ? demoInstructions.Count : instLoopSlots.Length;
-        loopIndex = loopIndex >= loopLength ? 0 : loopIndex;
 
         player.UpdateArrowDirection();
     }
@@ -122,7 +123,12 @@ public partial class Level : Node2D{
             _ => Vector2.Zero
         };
 
+        if(player.Confused){
+            moveDirection = -moveDirection;
+        }
+
         Vector2I movingTileAtlasCoords = tileLayer.GetCellAtlasCoords(playerGridPos + (Vector2I)moveDirection);
+
         if(movingTileAtlasCoords == new Vector2I(-1, -1)){
             return;
         }
@@ -133,6 +139,9 @@ public partial class Level : Node2D{
         else if(movingTileAtlasCoords == SPIKE_TILE){
             levelUI.OnResetButtonPressed();
             return;
+        }
+        else if(movingTileAtlasCoords == CONFUSION_TILE){
+            player.Confused = !player.Confused;
         }
 
         playerGridPos += (Vector2I)moveDirection;
@@ -169,6 +178,7 @@ public partial class Level : Node2D{
         playerDir = startDirection;
         player.Position = playerStartPos;
         playerGridPos = playerGridStartPos;
+        player.Confused = false;
 
         instLoopSlots[loopIndex].SetHighlighted(false);
         int prevLoopIndex = loopIndex - 1 < 0 ? instLoopSlots.Length - 1 : loopIndex - 1;

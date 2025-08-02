@@ -1,15 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckk5h6p0mcwvt"]
+[gd_scene load_steps=5 format=3 uid="uid://ckk5h6p0mcwvt"]
 
 [ext_resource type="Script" uid="uid://xpy36o4pq6vr" path="res://Level/Player.cs" id="1_f5lnt"]
 [ext_resource type="Texture2D" uid="uid://bom1lbjytctpu" path="res://Level/player.png" id="1_yscwi"]
 [ext_resource type="Texture2D" uid="uid://6apga4m1cpt" path="res://Level/arrow.png" id="2_toxye"]
+[ext_resource type="Texture2D" uid="uid://cx7p15ymutex" path="res://Level/player-confused.png" id="3_kxub6"]
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("upArrow", "rightArrow", "downArrow", "leftArrow")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("upArrow", "rightArrow", "downArrow", "leftArrow", "iconSprite")]
 script = ExtResource("1_f5lnt")
 upArrow = NodePath("UpArrow")
 rightArrow = NodePath("RightArrow")
 downArrow = NodePath("DownArrow")
 leftArrow = NodePath("LeftArrow")
+iconSprite = NodePath("Icon")
+playerTexture = ExtResource("1_yscwi")
+confusedPlayerTexture = ExtResource("3_kxub6")
 
 [node name="Icon" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

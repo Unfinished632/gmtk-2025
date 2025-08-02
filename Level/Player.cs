@@ -7,6 +7,18 @@ public partial class Player : Node2D{
 	[Export] Sprite2D rightArrow;
 	[Export] Sprite2D downArrow;
 	[Export] Sprite2D leftArrow;
+    [Export] Sprite2D iconSprite;
+    [Export] CompressedTexture2D playerTexture;
+	[Export] CompressedTexture2D confusedPlayerTexture;
+
+    bool confused = false;
+    public bool Confused{
+        get{ return confused; }
+		set{
+            confused = value;
+            iconSprite.Texture = confused ? confusedPlayerTexture : playerTexture;
+        }
+    }
 
 	public void UpdateArrowDirection(){
 		switch(level.playerDir){
