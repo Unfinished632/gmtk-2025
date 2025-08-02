@@ -17,10 +17,12 @@ public partial class Level : Node2D{
     [Export] TileMapLayer tileLayer;
     [Export] Control levelWonScreen;
     [Export] Control PauseMenu;
+    [Export] Control gameWinScreen;
     [Export] LevelUI levelUI;
     [Export] TextureButton nextLevelButton;
     [Export] TextureButton winMainMenuButton;
     [Export] TextureButton pauseMainMenuButton;
+    [Export] TextureButton gameWinMainMenuButton;
     [Export] TextureButton pauseResumeButton;
 
     [Export] AudioStreamPlayer resetSFX;
@@ -46,6 +48,8 @@ public partial class Level : Node2D{
     public LoopSlot[] instLoopSlots;
     public Direction playerDir = Direction.Up;
 
+    bool gameWon = false;
+
     public override void _Ready(){
         playerGridPos = (Vector2I)player.Position.Round() / tileLayer.TileSet.TileSize;
         playerDir = startDirection;
@@ -57,6 +61,7 @@ public partial class Level : Node2D{
         nextLevelButton.Pressed += () => GameManager.Instance.SwitchToLevel(levelIndex + 1);
         winMainMenuButton.Pressed += GameManager.Instance.SwitchToMainMenu;
         pauseMainMenuButton.Pressed += GameManager.Instance.SwitchToMainMenu;
+        gameWinMainMenuButton.Pressed += GameManager.Instance.SwitchToMainMenu;
         pauseResumeButton.Pressed += () => Paused = false;
 
         if(isDemo){
@@ -65,7 +70,7 @@ public partial class Level : Node2D{
     }
 
 	public override void _Process(double delta){
-        if(Input.IsActionJustPressed("pause") && !isDemo){
+        if(Input.IsActionJustPressed("pause") && !isDemo && !gameWon){
             Paused = !Paused;
         }
 
@@ -164,7 +169,8 @@ public partial class Level : Node2D{
         GameManager.Instance.LevelWinSFX.Play();
 
         if(levelIndex == GameManager.Instance.LevelScenes.Length - 1){
-            GameManager.Instance.SwitchToMainMenu();
+            gameWinScreen.Visible = true;
+            loopPaused = true;
             return;
         }
 

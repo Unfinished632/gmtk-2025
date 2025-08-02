@@ -26,17 +26,19 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_d6qko")
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("player", "tileLayer", "levelWonScreen", "PauseMenu", "levelUI", "nextLevelButton", "winMainMenuButton", "pauseMainMenuButton", "pauseResumeButton", "resetSFX", "loopIterSFX")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("player", "tileLayer", "levelWonScreen", "PauseMenu", "gameWinScreen", "levelUI", "nextLevelButton", "winMainMenuButton", "pauseMainMenuButton", "gameWinMainMenuButton", "pauseResumeButton", "resetSFX", "loopIterSFX")]
 script = ExtResource("1_qmtf6")
 startDirection = 1
 player = NodePath("Player")
 tileLayer = NodePath("TileLayer")
 levelWonScreen = NodePath("LevelWinScreen")
 PauseMenu = NodePath("PauseMenu")
+gameWinScreen = NodePath("GameWinScreen")
 levelUI = NodePath("LevelUI")
 nextLevelButton = NodePath("LevelWinScreen/NextLevelButton")
 winMainMenuButton = NodePath("LevelWinScreen/MainMenuButton")
 pauseMainMenuButton = NodePath("PauseMenu/MainMenuButton")
+gameWinMainMenuButton = NodePath("GameWinScreen/MainMenuButton")
 pauseResumeButton = NodePath("PauseMenu/ResumeButton")
 resetSFX = NodePath("ResetSFX")
 loopIterSFX = NodePath("LoopIterSFX")
@@ -188,7 +190,59 @@ offset_bottom = 252.0
 text = "Main
 Menu"
 
+[node name="GameWinScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="ColorRect" type="ColorRect" parent="GameWinScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.678431)
+
+[node name="Label" type="Label" parent="GameWinScreen"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 176.0
+offset_bottom = 331.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("7_22cqp")
+theme_override_font_sizes/font_size = 167
+text = "YOU WON!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="GameWinScreen"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 320.0
+offset_bottom = 475.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("7_22cqp")
+theme_override_font_sizes/font_size = 71
+text = "thx for playing :)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" parent="GameWinScreen" instance=ExtResource("7_d6qko")]
+layout_mode = 1
+offset_top = 92.0
+offset_bottom = 252.0
+
+[node name="Label" parent="GameWinScreen/MainMenuButton" index="0"]
+text = "Main
+Menu"
+
 [editable path="LevelWinScreen/NextLevelButton"]
 [editable path="LevelWinScreen/MainMenuButton"]
 [editable path="PauseMenu/ResumeButton"]
 [editable path="PauseMenu/MainMenuButton"]
+[editable path="GameWinScreen/MainMenuButton"]
