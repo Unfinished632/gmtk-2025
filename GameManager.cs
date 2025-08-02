@@ -18,6 +18,8 @@ public partial class GameManager : Node{
     [Export] public AudioStreamPlayer LoopSlotSFX{ get; private set; }
     [Export] public AudioStreamPlayer LevelWinSFX{ get; private set; }
 
+    public bool isFullscreen = false;
+
     public override void _Ready(){
 		if(Instance != null){
             QueueFree();

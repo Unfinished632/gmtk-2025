@@ -30,6 +30,8 @@ public partial class MainMenu : Control{
             levelButton.levelIndex = i;
             levelButtonsContainer.AddChild(levelButton);
         }
+
+        fullscreenCheckbox.IsChecked = GameManager.Instance.isFullscreen;
     }
 
 	void OnPlayButtonPressed(){
@@ -48,5 +50,6 @@ public partial class MainMenu : Control{
 
     void OnFullscreenCheckboxPressed(){
         DisplayServer.WindowSetMode(fullscreenCheckbox.IsChecked ? WindowMode.Fullscreen : WindowMode.Windowed);
+        GameManager.Instance.isFullscreen = fullscreenCheckbox.IsChecked;
     }
 }
