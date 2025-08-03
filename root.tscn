@@ -15,9 +15,12 @@ LevelWinSFX = NodePath("LevelWinSFX")
 
 [node name="ButtonSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vvh5c")
+volume_db = -12.0
 
 [node name="LoopSlotSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_28aoi")
+volume_db = -12.0
 
 [node name="LevelWinSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_jnlp7")
+volume_db = -12.0

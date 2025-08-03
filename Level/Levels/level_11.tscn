@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=4 uid="uid://c7os4x873f4pl"]
+
+[ext_resource type="PackedScene" uid="uid://n8xjoqxb572r" path="res://Level/level.tscn" id="1_ec8jh"]
+
+[node name="Level" instance=ExtResource("1_ec8jh")]
+startDirection = 3
+
+[node name="TileLayer" parent="." index="2"]
+tile_map_data = PackedByteArray("AAAVAAQAAAABAAAAAAAMAAYAAAADAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAkAAAACAAAAAAAMAAoAAAADAAAAAAAMAAsAAAABAAAAAAANAAYAAAAAAAAAAAANAAcAAAACAAAAAAANAAgAAAAAAAAAAAANAAkAAAAAAAAAAAANAAoAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAACAAAAAAAOAAgAAAAAAAAAAAAOAAkAAAAAAAAAAAAOAAoAAAADAAAAAAAOAAsAAAACAAAAAAAPAAYAAAACAAAAAAAPAAcAAAACAAAAAAAPAAgAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAABAAAAAAAQAAgAAAAAAAAAAAALAAoAAAACAAAAAAAMAAQAAAACAAAAAAAMAAUAAAAAAAAAAAANAAQAAAACAAAAAAANAAUAAAAAAAAAAAAOAAQAAAACAAAAAAAOAAUAAAADAAAAAAAPAAQAAAACAAAAAAAPAAUAAAAAAAAAAAAQAAQAAAACAAAAAAAQAAUAAAAAAAAAAAARAAYAAAACAAAAAAARAAcAAAACAAAAAAA=")
+
+[node name="Player" parent="." index="3"]
+position = Vector2(928, 416)
+
+[node name="LevelUI" parent="." index="4"]
+offset_left = 16.0
+offset_right = 1936.0
+loopSlotsCount = 6
+
+[editable path="LevelWinScreen/NextLevelButton"]
+[editable path="LevelWinScreen/MainMenuButton"]
+[editable path="PauseMenu/ResumeButton"]
+[editable path="PauseMenu/MainMenuButton"]
+[editable path="GameWinScreen/MainMenuButton"]
