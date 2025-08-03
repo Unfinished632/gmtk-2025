@@ -24,7 +24,7 @@ public partial class LevelUI : Control{
         startButton.Pressed += OnStartButtonPressed;
         resetButton.Pressed += OnResetButtonPressed;
 
-        levelLabel.Text = "Level " + (level.levelIndex + 1);
+        levelLabel.Text = "Level " + (level.levelIndex == GameManager.Instance.LevelScenes.Length - 1 ? "Final" : (level.levelIndex + 1));
     }
 
 	void OnStartButtonPressed(){
