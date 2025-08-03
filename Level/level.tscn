@@ -63,7 +63,7 @@ tile_set = SubResource("TileSet_yfk6w")
 position = Vector2(864, 608)
 level = NodePath("..")
 
-[node name="LevelUI" type="Control" parent="." node_paths=PackedStringArray("level", "loopSlotsContainer", "startButton", "resetButton")]
+[node name="LevelUI" type="Control" parent="." node_paths=PackedStringArray("level", "loopSlotsContainer", "startButton", "resetButton", "levelLabel")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
@@ -74,7 +74,23 @@ loopSlotScene = ExtResource("4_52x1o")
 loopSlotsContainer = NodePath("LoopSlots")
 startButton = NodePath("StartButton")
 resetButton = NodePath("ResetButton")
+levelLabel = NodePath("LevelLabel")
 loopSlotsCount = 3
+
+[node name="LevelLabel" type="Label" parent="LevelUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -424.0
+offset_top = 24.0
+offset_right = -23.0
+offset_bottom = 106.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("7_22cqp")
+theme_override_font_sizes/font_size = 88
+text = "Level 0"
+horizontal_alignment = 2
 
 [node name="LoopSlots" type="HBoxContainer" parent="LevelUI"]
 layout_mode = 0

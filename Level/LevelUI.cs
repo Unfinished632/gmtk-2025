@@ -7,6 +7,7 @@ public partial class LevelUI : Control{
     [Export] HBoxContainer loopSlotsContainer;
     [Export] TextureButton startButton;
     [Export] TextureButton resetButton;
+    [Export] Label levelLabel;
     [Export(PropertyHint.Range, "1, 10")] int loopSlotsCount = 1;
 
     LoopSlot[] loopSlots = [];
@@ -22,6 +23,8 @@ public partial class LevelUI : Control{
 
         startButton.Pressed += OnStartButtonPressed;
         resetButton.Pressed += OnResetButtonPressed;
+
+        levelLabel.Text = "Level " + (level.levelIndex + 1);
     }
 
 	void OnStartButtonPressed(){
